@@ -1,1 +1,86 @@
-<p>uncommon works!</p>
+<section class="mx-6 mb-4">
+  <h1 class="text-2xl font-semibold">Pipes no tan comunes</h1>
+  <h3 class="text-xl">Pipes incluidos en Angular</h3>
+</section>
+
+<div class="grid grid-col-1 md:grid-cols-2 xl:grid-cols-3 gap-5">
+  <app-card [title]="'I18nSelectPipe'">
+    <p>
+      Saludos {{ client().name }} es un placer
+      {{ client().gender | i18nSelect : invitationMap }} a nuestro evento
+    </p>
+
+    <button (click)="changeClient()" class="btn btn-primary">Click me</button>
+  </app-card>
+
+  <app-card [title]="'I18nPluralPipe'">
+    <p>Actualmente {{ clients().length | i18nPlural : clientsMap }}</p>
+
+    <button
+      [disabled]="clients().length === 0"
+      (click)="deleteClient()"
+      class="btn btn-primary"
+    >
+      Atender
+    </button>
+  </app-card>
+
+  <app-card [title]="'SlicePipe'">
+    <p>Original</p>
+    <p class="text-primary">
+      {{ clients().join(", ") }}
+    </p>
+
+    <p>Slice:0:2</p>
+    <p class="text-primary">
+      {{ clients() | slice : 0 : 2 }}
+    </p>
+
+    <p>Slice:1:2</p>
+    <p class="text-primary">
+      {{ clients() | slice : 1 : 2 }}
+    </p>
+
+    <p>Slice:1:3</p>
+    <p class="text-primary">
+      {{ clients() | slice : 1 : 3 }}
+    </p>
+
+    <p>Slice:2:3</p>
+    <p class="text-primary">
+      {{ clients() | slice : 3 : 4 }}
+    </p>
+
+    <p>Slice:0:-3</p>
+    <p class="text-primary">
+      {{ clients() | slice : 0 : -3 }}
+    </p>
+  </app-card>
+
+  <app-card [title]="'JsonPipe'">
+    <pre>{{ clients() | json }}</pre>
+    <pre>{{ client() | json }}</pre>
+    <p>{{ clients().join(", ") | json }}</p>
+  </app-card>
+
+  <app-card [title]="'KeyvaluePipe'">
+    <!-- <pre>{{ profile | keyvalue | json }}</pre> -->
+
+    <ul>
+      @for (item of profile | keyvalue; track $index) {
+      <li>
+        <strong class="text-primary">{{ item.key | titlecase }}</strong>
+        {{ item.value }}
+      </li>
+      }
+    </ul>
+  </app-card>
+
+  <app-card [title]="'AsyncPipe'">
+    <p>{{ promiseValue | async }}</p>
+
+    @if ((promiseValue | async); as value) {
+    <p class="text-primary">{{ value }}</p>
+    }
+  </app-card>
+</div>
