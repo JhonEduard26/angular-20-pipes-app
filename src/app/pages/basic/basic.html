@@ -6,19 +6,80 @@
 <div class="stats stats-vertical w-full lg:stats-horizontal shadow">
   <div class="stat">
     <div class="stat-title">LowerCase pipe</div>
-    <div class="stat-value">{{ nameUpper() | lowercase }}</div>
+    <div class="stat-value text-primary">{{ nameUpper() | lowercase }}</div>
     <div class="stat-desc">{{ nameUpper() }}</div>
   </div>
 
   <div class="stat">
     <div class="stat-title">UpperCase pipe</div>
-    <div class="stat-value">{{ nameLower() | uppercase }}</div>
+    <div class="stat-value text-primary">{{ nameLower() | uppercase }}</div>
     <div class="stat-desc">{{ nameLower() }}</div>
   </div>
 
   <div class="stat">
     <div class="stat-title">TitleCase pipe</div>
-    <div class="stat-value">{{ fullName() | titlecase }}</div>
+    <div class="stat-value text-primary">{{ fullName() | titlecase }}</div>
     <div class="stat-desc">{{ fullName() }}</div>
   </div>
+</div>
+
+<div class="divider"></div>
+
+<div class="stats stats-vertical w-full lg:stats-horizontal shadow">
+  <div class="stat">
+    <div class="stat-title">Date pipe</div>
+    <div class="stat-value text-primary">{{ date() | date }}</div>
+    <div class="stat-desc">{{ date() }}</div>
+  </div>
+
+  <div class="stat">
+    <div class="stat-title">Date | long | GMT-5</div>
+    <div class="stat-value text-primary">
+      {{ date() | date : "medium" : "GMT-5" }}
+    </div>
+    <div class="stat-desc">{{ date() }}</div>
+  </div>
+</div>
+
+<div class="divider"></div>
+
+<div class="stats stats-vertical w-full lg:stats-horizontal shadow">
+  <div class="stat">
+    <div class="stat-title">Date pipe</div>
+    <div class="stat-value text-primary">
+      {{ date() | date : "dd/MM/yyyy" }}
+    </div>
+    <div class="stat-desc">{{ date() }}</div>
+  </div>
+
+  <div class="stat">
+    <div class="stat-title">Date pipe</div>
+    <div class="stat-value text-primary">{{ date() | date : "HH:mm:ss" }}</div>
+    <div class="stat-desc">{{ date() }}</div>
+  </div>
+
+  <div class="stat">
+    <div class="stat-title">TitleCase pipe</div>
+    <div class="stat-value text-primary">
+      {{ date() | date : "EEEE d, MMMM" }}
+    </div>
+    <div class="stat-desc">{{ date() }}</div>
+  </div>
+</div>
+
+<div class="divider"></div>
+
+<div class="flex gap-2">
+  <p>Locale actual:</p>
+  <span class="badge badge-primary">{{ localeService.getLocale }}</span>
+
+  <button (click)="changeLocale('fr')" class="btn btn-secondary">
+    Changer to Francais
+  </button>
+  <button (click)="changeLocale('en')" class="btn btn-secondary">
+    Change to english
+  </button>
+  <button (click)="changeLocale('es')" class="btn btn-secondary">
+    Cambiar a español
+  </button>
 </div>
