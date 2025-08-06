@@ -1,0 +1,19 @@
+<div class="navbar bg-base-100 shadow-sm">
+  <div class="navbar-start">
+    <a class="btn btn-ghost text-xl">Pipes App</a>
+  </div>
+  <div class="navbar-end gap-2">
+    @for (item of navigationItems; track item.path) {
+    <!--  -->
+    @if (item.path !== "**") {
+    <a
+      href=""
+      class="btn"
+      [routerLink]="item.path"
+      [routerLinkActive]="['text-accent']"
+    >
+      {{ item.title }}
+    </a>
+    } }
+  </div>
+</div>
